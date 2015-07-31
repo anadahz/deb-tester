@@ -1,3 +1,5 @@
+machine:
+
 TESTING_PACKAGES="tor tor-geoipdb"
 CHROOT_DIR=/tmp/arm-chroot
 MIRROR="http://http.debian.net/debian/"
