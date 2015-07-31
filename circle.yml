@@ -47,6 +47,5 @@ dependencies:
 test:
   override:
     - echo "Running tests"
-    - echo "Environment: $(uname -a)"
     - sudo apt-get install -q -y ${TESTING_PACKAGES}
 
