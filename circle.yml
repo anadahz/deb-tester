@@ -1,14 +1,12 @@
 machine:
-
-TESTING_PACKAGES="tor tor-geoipdb"
-CHROOT_DIR=/tmp/arm-chroot
-MIRROR="http://http.debian.net/debian/"
-VERSION=wheezy
-CHROOT_ARCH=armel
-
-HOST_DEPENDENCIES="debootstrap qemu-user-static binfmt-support sbuild"
-
-GUEST_DEPENDENCIES="build-essential git m4 sudo python"
+  environment:
+    TESTING_PACKAGES: "tor tor-geoipdb"
+    CHROOT_DIR: /tmp/arm-chroot
+    MIRROR: "http://http.debian.net/debian/"
+    VERSION: wheezy
+    CHROOT_ARCH: armel
+    HOST_DEPENDENCIES: "debootstrap qemu-user-static binfmt-support sbuild"
+    GUEST_DEPENDENCIES: "build-essential git m4 sudo python"
 
 dependencies:
   cache_directories:
@@ -39,12 +37,12 @@ dependencies:
       echo "Running inside chrooted environment"
     
       . ./envvars.sh
-    else
-      if [ "${ARCH}" = "arm" ]; then
-        echo "Setting up chrooted ARM environment"
-        setup_arm_chroot
+      else
+        if [ "${ARCH}" = "arm" ]; then
+          echo "Setting up chrooted ARM environment"
+          setup_arm_chroot
+        fi
       fi
-    fi
 
 test:
   override:
